@@ -64,6 +64,11 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            /* Q2 ベア（セクション外・絶対配置）の位置・サイズはここで調整 */
+            --q2-bear-right: 11mm;
+            --q2-bear-top: 198mm;
+            --q2-bear-width: 36mm;
+            --q2-bear-max-height: 54mm;
         }
 
         /* ヘッダー: 左サークル + サークル名・バッジ（旧バナー位置） */
@@ -394,6 +399,20 @@
             padding: 5px 10px;
             margin-top: 5px;
         }
+        /* Q2 ベア: Q2 ボックス外。基準は .content（padding 内側の左上＝(0,0) に対し top / right） */
+        .q2-bear-absolute {
+            position: absolute;
+            top: var(--q2-bear-top);
+            right: var(--q2-bear-right);
+            width: var(--q2-bear-width);
+            max-height: var(--q2-bear-max-height);
+            height: auto;
+            object-fit: contain;
+            object-position: top right;
+            z-index: 4;
+            border-radius: 6px;
+            pointer-events: none;
+        }
 
         /* Q3 特有 */
         .q3-image {
@@ -591,6 +610,9 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Q2 ベア: Q2 セクション外。.content の --q2-bear-* で位置・大きさを指定 -->
+            <img src="q2_bear.png" alt="" class="q2-bear-absolute" width="640" height="640">
 
             <!-- Q3 -->
             <div class="q-section">
