@@ -178,7 +178,7 @@
             padding-left: 5mm;
             padding-right: 5mm;
             background-color: #fff;
-            margin-bottom: 6mm;
+            margin-bottom: 3mm;
             box-shadow: 4px 4px 0px rgba(139, 0, 0, 0.2);
         }
         .info-box ul {
@@ -215,7 +215,7 @@
         /* WACPACからの挑戦状（問題一覧の前） */
         .challenge-callout {
             margin-bottom: 4mm;
-            padding: 3mm 4mm;
+            padding: 2mm 4mm;
             background-color: #faf7f2;
             border: 2px solid #1a1a1a;
             border-left: 5px solid #8b0000;
@@ -240,6 +240,49 @@
         .challenge-body strong {
             color: #8b0000;
         }
+        /* 挑戦状内: X ハッシュタグ（紙面節約のため同一ボックス） */
+        .challenge-social {
+            margin-top: 2mm;
+            padding-top: 2mm;
+            border-top: 1px dashed #c8a14b;
+        }
+        .challenge-hashtag-line {
+            margin: 0 0 1mm;
+            font-size: 10.5px;
+            font-weight: 900;
+            line-height: 1.35;
+            color: #1a1a1a;
+        }
+        .challenge-hashtag-mark {
+            font-family: ui-monospace, monospace;
+            font-weight: 900;
+            color: #0d6e9e;
+            background-color: rgba(13, 110, 158, 0.1);
+            padding: 0 4px;
+            border-radius: 3px;
+            margin-right: 1px;
+        }
+        .challenge-rule-row {
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 3px 6px;
+            font-size: 8.5px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: #444;
+        }
+        .challenge-rule-ng {
+            color: #6b2222;
+        }
+        .challenge-rule-ok {
+            color: #1a5c30;
+        }
+        .challenge-rule-sep {
+            color: #b8a88c;
+            font-weight: 400;
+        }
 
         /* 問題セクション共通 */
         .q-section {
@@ -250,7 +293,7 @@
             padding-bottom: 3mm;
             padding-left: 5mm;
             padding-right: 5mm;
-            margin-bottom: 4mm;
+            margin-bottom: 3mm;
             position: relative;
         }
         .q-title {
@@ -463,8 +506,12 @@
                 <p class="challenge-body">
                     ここから先の<strong>3問</strong>は、WACPACが新歓でお届けする<strong>挑戦状</strong>だ。紙とペンでも、エディタでも、好きなやり方でかかってこい。難易度は問ごとに違うから、まずは手が伸びるところからで大丈夫。<br>
                     解けたら新歓で<strong>解法自慢・感想・追加のひねり</strong>、なんでも聞かせてくれ。待ってるぞ。
-                    
                 </p>
+                <div class="challenge-social" aria-label="Xでの共有">
+                    <p class="challenge-hashtag-line">
+                        <span class="challenge-hashtag-mark">#wacpac_2026</span>で是非、感想・解法を呟いてください！！(<strong style="color: #8b0000;">ただし、4/6以前の解法の共有はお控えください</strong>)
+                    </p>
+                </div>
             </section>
 
             <!-- Q1 -->
