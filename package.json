@@ -1,0 +1,13 @@
+{
+  "name": "wacpac-welcome-poster-2026",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "puppeteer browsers install chrome",
+    "pdf:chrome": "puppeteer browsers install chrome",
+    "pdf": "node scripts/print-pdf.mjs"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.2.0"
+  }
+}
