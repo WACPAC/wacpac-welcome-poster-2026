@@ -66,49 +66,98 @@
             height: 100%;
         }
 
-        /* ヘッダー: 左サークル + 右バナー */
+        /* ヘッダー: 左サークル + サークル名・バッジ（旧バナー位置） */
+        .header-block {
+            margin-bottom: 4mm;
+            flex-shrink: 0;
+        }
         .header-row {
             display: flex;
             align-items: stretch;
-            gap: 2mm;
-            height: 24mm;
-            margin-bottom: 3mm;
-            flex-shrink: 0;
+            gap: 3mm;
         }
         .header-circle {
-            width: 24mm;
-            height: 24mm;
+            width: 26mm;
+            height: 26mm;
+            align-self: center;
             flex-shrink: 0;
             border-radius: 50%;
             object-fit: contain;
             background-color: #fff;
             box-shadow: 0 1px 4px rgba(0,0,0,0.12);
         }
-        .header-banner {
+        .header-body {
             flex: 1 1 0;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 6px;
-            background-color: #333;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 2.5mm;
         }
-
-        /* タイトル・キャッチコピー */
-        .title-section {
-            text-align: center;
-            margin-bottom: 5mm;
+        .header-title-panel {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2mm;
+            padding: 3mm 3.5mm;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 2px solid #8b0000;
+            box-shadow: 3px 3px 0 rgba(139, 0, 0, 0.12);
         }
-        .title-section h1 {
-            color: #8b0000; /* 早稲田エンジ */
-            font-size: 28px;
+        .header-contact {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5mm;
+            padding-left: 2.5mm;
+            margin-left: 0.5mm;
+            border-left: 2px dashed #c8a14b;
+        }
+        .header-x-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .header-x-row .x-icon {
+            width: 12px;
+            height: 12px;
+        }
+        .header-x-handle {
+            font-family: ui-monospace, monospace;
+            font-size: 9.5px;
+            color: #536471;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .header-x-handle:hover {
+            text-decoration: underline;
+        }
+        .header-qr {
+            width: 19mm;
+            height: 19mm;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 3px;
+            background-color: #fff;
+            padding: 1px;
+            object-fit: contain;
+        }
+        .header-title-panel h1 {
+            color: #8b0000;
+            font-size: 17px;
             font-weight: 900;
-            letter-spacing: 1px;
-            margin-bottom: 2mm;
+            letter-spacing: 0.02em;
+            line-height: 1.25;
+            text-align: left;
+            margin: 0;
         }
         .badges {
             display: flex;
-            justify-content: center;
-            gap: 8px;
+            justify-content: flex-start;
+            gap: 6px;
             flex-wrap: wrap;
         }
         .badge {
@@ -124,7 +173,10 @@
         .info-box {
             border: 3px solid #8b0000;
             border-radius: 10px;
-            padding: 6mm;
+            padding-top: 3mm;
+            padding-bottom: 3mm;
+            padding-left: 5mm;
+            padding-right: 5mm;
             background-color: #fff;
             margin-bottom: 6mm;
             box-shadow: 4px 4px 0px rgba(139, 0, 0, 0.2);
@@ -160,12 +212,44 @@
             display: block;
         }
 
+        /* WACPACからの挑戦状（問題一覧の前） */
+        .challenge-callout {
+            margin-bottom: 4mm;
+            padding: 3mm 4mm;
+            background-color: #faf7f2;
+            border: 2px solid #1a1a1a;
+            border-left: 5px solid #8b0000;
+            border-radius: 6px;
+            box-shadow: 3px 3px 0 rgba(200, 161, 75, 0.35);
+            flex-shrink: 0;
+        }
+        .challenge-heading {
+            font-size: 14px;
+            font-weight: 900;
+            color: #8b0000;
+            letter-spacing: 0.06em;
+            margin-bottom: 2mm;
+            line-height: 1.2;
+        }
+        .challenge-body {
+            font-size: 11.5px;
+            line-height: 1.5;
+            color: #2a2a2a;
+            font-weight: 700;
+        }
+        .challenge-body strong {
+            color: #8b0000;
+        }
+
         /* 問題セクション共通 */
         .q-section {
             background-color: #fff;
             border: 2px solid #1a1a1a;
             border-radius: 8px;
-            padding: 5mm;
+            padding-top: 3mm;
+            padding-bottom: 3mm;
+            padding-left: 5mm;
+            padding-right: 5mm;
             margin-bottom: 4mm;
             position: relative;
         }
@@ -249,60 +333,87 @@
 
         /* Q3 特有 */
         .q3-image {
-            width: 150px;
+            width: 180px;
             height: auto;
             object-fit: contain;
             flex-shrink: 0;
             margin: auto 0;
             border-radius: 6px;
-            box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
         }
 
-        /* フッター */
-        .footer {
+        /* ページ右下: DM 案内 + GitHub */
+        .bottom-bar {
             margin-top: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-shrink: 0;
             border-top: 3px dashed #c8a14b;
-            padding-top: 5mm;
+            padding-top: 3mm;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1.5mm;
         }
-        .footer-text {
-            flex: 1;
-            padding: 0 4mm 0 0;
-            text-align: left;
-        }
-        .footer-text h2 {
-            font-size: 16px;
-            color: #8b0000;
-            margin-bottom: 4px;
-        }
-        .footer-text p {
+        .footer-dm-note {
             font-size: 13px;
+            font-weight: 700;
             color: #333;
             line-height: 1.4;
-            font-weight: 700;
+            margin: 0;
+            text-align: right;
+            width: 100%;
         }
-        .footer-text .url {
-            color: #1DA1F2;
-            font-family: monospace;
-            font-size: 14px;
-            display: inline-block;
-            margin-top: 4px;
+        /* Xマーク SVG: Simple Icons (CC0) */
+        .x-icon {
+            flex-shrink: 0;
+            color: #0f1419;
         }
-        .qr-code {
-            width: 25mm;
-            height: 25mm;
-            border: 2px solid #1a1a1a;
-            border-radius: 4px;
-            background-color: #fff;
-            padding: 2px;
+        .x-icon svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .repo-link-bar {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .repo-link-bar a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
+            font-size: 8.5px;
+            color: #9a9590;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+        .repo-link-bar a:hover {
+            color: #5c5854;
+        }
+        .gh-icon {
+            width: 11px;
+            height: 11px;
+            flex-shrink: 0;
+            color: inherit;
+            opacity: 0.85;
+        }
+        .gh-icon svg {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
 
         /* 印刷時の設定 (ブラウザのUIや背景色を消す) */
         @media print {
             body { background: none; padding: 0; }
             .poster { box-shadow: none; }
+            .challenge-callout {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
         }
     </style>
 </head>
@@ -310,32 +421,51 @@
 
     <div class="poster">
         <div class="content">
-            <div class="header-row">
-                <img src="wacpac_circle_icon.png" alt="WACPAC" class="header-circle" onerror="this.style.display='none'">
-                <img src="wacpac_banner_icon.png" alt="WACPAC Banner" class="header-banner" onerror="this.style.display='none'">
-            </div>
-
-            <!-- Title Section -->
-            <div class="title-section">
-                <h1>早稲田競技系プログラミングサークル WACPAC</h1>
-                <div class="badges">
-                    <span class="badge">オール早稲田</span>
-                    <span class="badge">学年不問(2入もOK!)</span>
-                    <span class="badge">初心者歓迎</span>
-                    <span class="badge">経験者歓迎</span>
+            <header class="header-block">
+                <div class="header-row">
+                    <img src="wacpac_circle_icon.png" alt="WACPAC" class="header-circle" onerror="this.style.display='none'">
+                    <div class="header-body">
+                        <div class="header-title-panel">
+                            <h1>早稲田競技系プログラミングサークル WACPAC</h1>
+                            <div class="badges">
+                                <span class="badge">オール早稲田</span>
+                                <span class="badge">学年不問(2入もOK!)</span>
+                                <span class="badge">初心者歓迎</span>
+                                <span class="badge">経験者歓迎</span>
+                            </div>
+                        </div>
+                        <aside class="header-contact" aria-label="X（旧Twitter）">
+                            <div class="header-x-row">
+                                <span class="x-icon" aria-hidden="true" title="X">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                                </span>
+                                <a class="header-x-handle" href="https://x.com/wacpac_wsd" target="_blank" rel="noopener noreferrer">@wacpac_wsd</a>
+                            </div>
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://x.com/wacpac_wsd" alt="X @wacpac_wsd のQRコード" class="header-qr" width="120" height="120">
+                        </aside>
+                    </div>
                 </div>
-            </div>
+            </header>
 
             <!-- Info Box -->
             <div class="info-box">
                 <ul>
                     <li>新歓活動日： 4/6(月), 14(火), 22(水), 30(木)
-                        <span class="info-highlight">全日 4限〜5限 (15:05 - 16:45) / 途中抜け・途中参加もちろんOK！</span>
+                        <span class="info-highlight">全日 5限〜6限 (17:00 - 20:00) / 途中抜け・途中参加OK！</span>
                     </li>
-                    <li>場所： 暫定未定 <span class="info-sub">(最新の教室場所はX(旧Twitter)で確認してね！)</span></li>
+                    <li>場所： 未定</li>
                     <li>内容： 下記掲載問題の解説・競技プログラミング体験会・競プロコンテスト(先輩とガチンコ勝負!)</li>
                 </ul>
             </div>
+
+            <section class="challenge-callout" aria-labelledby="challenge-heading">
+                <h2 id="challenge-heading" class="challenge-heading">WACPACからの挑戦状</h2>
+                <p class="challenge-body">
+                    ここから先の<strong>3問</strong>は、WACPACが新歓でお届けする<strong>挑戦状</strong>だ。紙とペンでも、エディタでも、好きなやり方でかかってこい。難易度は問ごとに違うから、まずは手が伸びるところからで大丈夫。<br>
+                    解けたら新歓で<strong>解法自慢・感想・追加のひねり</strong>、なんでも聞かせてくれ。待ってるぞ。
+                    
+                </p>
+            </section>
 
             <!-- Q1 -->
             <div class="q-section">
@@ -345,25 +475,28 @@
                 <div class="q-content">
                     <div class="q-text">
                         <p>5×5のマス目について、左上端のマスから<strong>右または下に隣接するマスへの移動のみ</strong>を繰り返して右下端のマスまで到達する経路について、経路上に含まれるマス（始点・終点を含む）に書かれた整数の総和を経路のスコアとする。<br>
-                        この時、<strong>すべての経路でスコアが互いに相異なる</strong>ように、マス目に非負整数を書き込め。</p>
+                        この時、<strong>すべての経路でスコアが互いに相異なる</strong>ように、マス目に<strong>非負整数</strong>を書き込め。</p>
                         <ul style="margin-top: 8px; padding-left: 20px;">
-                            <li><strong class="diff-easy">Easy :</strong> 経路のスコアの最大値が130以下</li>
-                            <li><strong class="diff-hard">Hard :</strong> 経路のスコアの最大値が70以下</li>
+                            <li style="font-size: 1.1em;"><strong class="diff-easy">Easy :</strong> 経路のスコアの最大値が<strong style="font-size: 1.3em;">130</strong>以下</li>
+                            <li style="font-size: 1.1em;"><strong class="diff-hard">Hard :</strong> 経路のスコアの最大値が<strong style="font-size: 1.3em;">70</strong>以下</li>
                         </ul>
                         <div class="q-source">出典: https://atcoder.jp/contests/arc214 D問題</div>
                     </div>
-                    <div class="q1-grid-wrapper">
-                        <table class="q1-table">
-                            <tr><td>1</td><td>3</td><td>6</td><td>2</td><td>5</td></tr>
-                            <tr><td>4</td><td>9</td><td>1</td><td>8</td><td>4</td></tr>
-                            <tr><td>5</td><td>8</td><td>7</td><td>3</td><td>9</td></tr>
-                            <tr><td>2</td><td>4</td><td>6</td><td>5</td><td>1</td></tr>
-                            <tr><td>3</td><td>7</td><td>8</td><td>2</td><td>6</td></tr>
-                        </table>
-                        <!-- 経路描画 (1,1)->(1,2)->(2,2)->(3,2)->(3,3)->(4,3)->(5,3)->(5,4)->(5,5) -->
-                        <svg class="q1-path" viewBox="0 0 125 125">
-                            <polyline points="12.5,12.5 37.5,12.5 37.5,37.5 37.5,62.5 62.5,62.5 62.5,87.5 62.5,112.5 87.5,112.5 112.5,112.5" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                    <div class="flex-col">
+                      <p><strong>例(条件を満たしません)</strong></p>
+                      <div class="q1-grid-wrapper">
+                          <table class="q1-table">
+                              <tr><td>1</td><td>3</td><td>6</td><td>2</td><td>5</td></tr>
+                              <tr><td>4</td><td>9</td><td>1</td><td>8</td><td>4</td></tr>
+                              <tr><td>5</td><td>8</td><td>7</td><td>3</td><td>9</td></tr>
+                              <tr><td>2</td><td>4</td><td>6</td><td>5</td><td>1</td></tr>
+                              <tr><td>3</td><td>7</td><td>8</td><td>2</td><td>6</td></tr>
+                          </table>
+                          <!-- 経路描画 (1,1)->(1,2)->(2,2)->(3,2)->(3,3)->(4,3)->(5,3)->(5,4)->(5,5) -->
+                          <svg class="q1-path" viewBox="0 0 125 125">
+                              <polyline points="12.5,12.5 37.5,12.5 37.5,37.5 37.5,62.5 62.5,62.5 62.5,87.5 62.5,112.5 87.5,112.5 112.5,112.5" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -403,16 +536,17 @@
                 </div>
             </div>
 
-            <!-- Footer (Contact Info) -->
-            <div class="footer">
-                <div class="footer-text">
-                    <h2>お問い合わせ・最新情報はこちら！</h2>
-                    <p>競プロの面白さを体感せよ！解けたら新歓へGO！<br>
-                    質問等もX(旧Twitter)のDMで気軽にどうぞ！</p>
-                    <p class="url">X : https://x.com/wacpac_wsd</p>
-                </div>
-
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://x.com/wacpac_wsd" alt="QR Code" class="qr-code">
+            <div class="bottom-bar">
+                <!-- <p class="footer-dm-note">参加希望・質問はXのDMへ！</p> -->
+                <p class="repo-link-bar">
+                    <a href="https://github.com/WACPAC/wacpac-welcome-poster-2026" target="_blank" rel="noopener noreferrer" aria-label="このポスターの GitHub リポジトリ">
+                        <span class="gh-icon" aria-hidden="true">
+                            <!-- GitHub マーク: Simple Icons (CC0) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </span>
+                        <span>WACPAC / wacpac-welcome-poster-2026</span>
+                    </a>
+                </p>
             </div>
 
         </div>
