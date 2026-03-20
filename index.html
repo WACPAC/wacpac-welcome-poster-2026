@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WACPAC 新歓ポスター</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* A4サイズ印刷用の設定 */
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #525659; /* ブラウザプレビュー時の背景 */
+            display: flex;
+            justify-content: center;
+            font-family: 'Noto Sans JP', sans-serif;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            padding: 20px;
+        }
+
+        /* ポスター本体 (A4縦: 210mm x 297mm) */
+        .poster {
+            width: 210mm;
+            height: 297mm;
+            background-color: #fdfbf7;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            color: #1a1a1a;
+        }
+
+        /* 全体の背景ドットパターン */
+        .poster::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(#e6d5b8 15%, transparent 15%), radial-gradient(#e6d5b8 15%, transparent 15%);
+            background-size: 15px 15px;
+            background-position: 0 0, 7.5px 7.5px;
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* 内部のコンテンツラッパー */
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 6mm;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* ヘッダー: 左サークル + 右バナー */
+        .header-row {
+            display: flex;
+            align-items: stretch;
+            gap: 2mm;
+            height: 24mm;
+            margin-bottom: 3mm;
+            flex-shrink: 0;
+        }
+        .header-circle {
+            width: 24mm;
+            height: 24mm;
+            flex-shrink: 0;
+            border-radius: 50%;
+            object-fit: contain;
+            background-color: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+        }
+        .header-banner {
+            flex: 1 1 0;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 6px;
+            background-color: #333;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+        }
+
+        /* タイトル・キャッチコピー */
+        .title-section {
+            text-align: center;
+            margin-bottom: 5mm;
+        }
+        .title-section h1 {
+            color: #8b0000; /* 早稲田エンジ */
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 2mm;
+        }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background-color: #8b0000;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* 新歓情報ボックス */
+        .info-box {
+            border: 3px solid #8b0000;
+            border-radius: 10px;
+            padding: 6mm;
+            background-color: #fff;
+            margin-bottom: 6mm;
+            box-shadow: 4px 4px 0px rgba(139, 0, 0, 0.2);
+        }
+        .info-box ul {
+            list-style: none;
+        }
+        .info-box li {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 4px;
+            padding-left: 20px;
+            position: relative;
+            font-weight: 700;
+        }
+        .info-box li::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            color: #8b0000;
+            font-size: 10px;
+            top: 3px;
+        }
+        .info-highlight {
+            color: #8b0000;
+            display: block;
+            margin-top: 2px;
+        }
+        .info-sub {
+            font-size: 13px;
+            font-weight: 400;
+            margin-top: 2px;
+            display: block;
+        }
+
+        /* 問題セクション共通 */
+        .q-section {
+            background-color: #fff;
+            border: 2px solid #1a1a1a;
+            border-radius: 8px;
+            padding: 5mm;
+            margin-bottom: 4mm;
+            position: relative;
+        }
+        .q-title {
+            font-size: 16px;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 3mm;
+            border-bottom: 2px solid #c8a14b;
+            display: inline-block;
+            padding-bottom: 2px;
+        }
+        
+        /* 難易度カラー設定 */
+        .diff-easy { color: #009900; }
+        .diff-medium { color: #ff8c00; }
+        .diff-hard { color: #cc0000; }
+
+        .q-content {
+            display: flex;
+            gap: 5mm;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #333;
+        }
+        .q-text {
+            flex: 1;
+        }
+
+        /* Q1 特有 */
+        .q1-grid-wrapper {
+            position: relative;
+            width: 125px;
+            height: 125px;
+            flex-shrink: 0;
+            margin: auto 0;
+        }
+        .q1-table {
+            border-collapse: collapse;
+            width: 100%;
+            height: 100%;
+            background-color: #fdfdfd;
+        }
+        .q1-table td {
+            border: 1px solid #1a1a1a;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 12px;
+            font-weight: 900;
+        }
+        .q1-path {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+        }
+        .q-source {
+            font-size: 10px;
+            color: #888;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        /* Q2 特有 */
+        .math-formula {
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 8px 0;
+            font-family: serif;
+        }
+        .q2-conditions {
+            background-color: #fdfbf7;
+            border-left: 4px solid #8b0000;
+            padding: 5px 10px;
+            margin-top: 5px;
+        }
+
+        /* Q3 特有 */
+        .q3-image {
+            width: 150px;
+            height: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+            margin: auto 0;
+            border-radius: 6px;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+        }
+
+        /* フッター */
+        .footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 3px dashed #c8a14b;
+            padding-top: 5mm;
+        }
+        .footer-text {
+            flex: 1;
+            padding: 0 4mm 0 0;
+            text-align: left;
+        }
+        .footer-text h2 {
+            font-size: 16px;
+            color: #8b0000;
+            margin-bottom: 4px;
+        }
+        .footer-text p {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+        .footer-text .url {
+            color: #1DA1F2;
+            font-family: monospace;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+        .qr-code {
+            width: 25mm;
+            height: 25mm;
+            border: 2px solid #1a1a1a;
+            border-radius: 4px;
+            background-color: #fff;
+            padding: 2px;
+        }
+
+        /* 印刷時の設定 (ブラウザのUIや背景色を消す) */
+        @media print {
+            body { background: none; padding: 0; }
+            .poster { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster">
+        <div class="content">
+            <div class="header-row">
+                <img src="wacpac_circle_icon.png" alt="WACPAC" class="header-circle" onerror="this.style.display='none'">
+                <img src="wacpac_banner_icon.png" alt="WACPAC Banner" class="header-banner" onerror="this.style.display='none'">
+            </div>
+
+            <!-- Title Section -->
+            <div class="title-section">
+                <h1>早稲田競技系プログラミングサークル WACPAC</h1>
+                <div class="badges">
+                    <span class="badge">オール早稲田</span>
+                    <span class="badge">学年不問(2入もOK!)</span>
+                    <span class="badge">初心者歓迎</span>
+                    <span class="badge">経験者歓迎</span>
+                </div>
+            </div>
+
+            <!-- Info Box -->
+            <div class="info-box">
+                <ul>
+                    <li>新歓活動日： 4/6(月), 14(火), 22(水), 30(木)
+                        <span class="info-highlight">全日 4限〜5限 (15:05 - 16:45) / 途中抜け・途中参加もちろんOK！</span>
+                    </li>
+                    <li>場所： 暫定未定 <span class="info-sub">(最新の教室場所はX(旧Twitter)で確認してね！)</span></li>
+                    <li>内容： 下記掲載問題の解説・競技プログラミング体験会・競プロコンテスト(先輩とガチンコ勝負!)</li>
+                </ul>
+            </div>
+
+            <!-- Q1 -->
+            <div class="q-section">
+                <div class="q-title">
+                    Q1. Distinct Sum Grid Path <span style="font-size: 13px;">(<span class="diff-easy">Easy</span>, <span class="diff-hard">Hard</span>)</span>
+                </div>
+                <div class="q-content">
+                    <div class="q-text">
+                        <p>5×5のマス目について、左上端のマスから<strong>右または下に隣接するマスへの移動のみ</strong>を繰り返して右下端のマスまで到達する経路について、経路上に含まれるマス（始点・終点を含む）に書かれた整数の総和を経路のスコアとする。<br>
+                        この時、<strong>すべての経路でスコアが互いに相異なる</strong>ように、マス目に非負整数を書き込め。</p>
+                        <ul style="margin-top: 8px; padding-left: 20px;">
+                            <li><strong class="diff-easy">Easy :</strong> 経路のスコアの最大値が130以下</li>
+                            <li><strong class="diff-hard">Hard :</strong> 経路のスコアの最大値が70以下</li>
+                        </ul>
+                        <div class="q-source">出典: https://atcoder.jp/contests/arc214 D問題</div>
+                    </div>
+                    <div class="q1-grid-wrapper">
+                        <table class="q1-table">
+                            <tr><td>1</td><td>3</td><td>6</td><td>2</td><td>5</td></tr>
+                            <tr><td>4</td><td>9</td><td>1</td><td>8</td><td>4</td></tr>
+                            <tr><td>5</td><td>8</td><td>7</td><td>3</td><td>9</td></tr>
+                            <tr><td>2</td><td>4</td><td>6</td><td>5</td><td>1</td></tr>
+                            <tr><td>3</td><td>7</td><td>8</td><td>2</td><td>6</td></tr>
+                        </table>
+                        <!-- 経路描画 (1,1)->(1,2)->(2,2)->(3,2)->(3,3)->(4,3)->(5,3)->(5,4)->(5,5) -->
+                        <svg class="q1-path" viewBox="0 0 125 125">
+                            <polyline points="12.5,12.5 37.5,12.5 37.5,37.5 37.5,62.5 62.5,62.5 62.5,87.5 62.5,112.5 87.5,112.5 112.5,112.5" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="q-section">
+                <div class="q-title">
+                    Q2. Typo 1, 2 <span style="font-size: 13px;">(<span class="diff-medium">Medium</span>)</span>
+                </div>
+                <div class="q-content">
+                    <div class="q-text">
+                        <p>正整数 <math display="inline"><mi>N</mi></math> が与えられる。正整数 <math display="inline"><mi>x</mi></math> に対して <math display="inline"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math> を、<math display="inline"><mi>x</mi></math> を十進数表記にした文字列で <strong>1 を 2 に、2 を 1 に変えた文字列を十進数として解釈した数</strong>、と定める。例えば、<math display="inline"><mi>f</mi><mo>(</mo><mn>241312</mn><mo>)</mo><mo>=</mo><mn>142321</mn></math> である。<br>
+                        このとき、以下の値を求めよ。</p>
+                        <div class="math-formula">
+                            &sum;<sub>x=1</sub><sup>N</sup> f(x)
+                        </div>
+                        <div class="q2-conditions">
+                            <strong>【手計算】</strong> N = 2026<br>
+                            <strong>【プログラム】</strong> N &le; 10<sup>18</sup> を満たす入力に対して答えを求めるプログラムを作れ
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="q-section">
+                <div class="q-title">
+                    Q3. Waseda Bear's Button Mashing <span style="font-size: 13px;">(<span class="diff-hard">Hard</span>)</span>
+                </div>
+                <div class="q-content">
+                    <div class="q-text">
+                        <p>縦5マス、横5マスの石版があります。最初はすべてのマスに「0」が書かれています。</p>
+                        <p>早稲田ベア君は<strong>「好きなタテ1列、またはヨコ1列を選んで、その列の数字をすべて＋1する」</strong>という魔法のボタンを何度でも押せます。</p>
+                        <p>ボタンを連打していたところ、右の石版のようになりました。しかし、いくつかの数字が泥をかぶって見えなくなってしまいました。「？」に入る数字を当ててください。</p>
+                    </div>
+                    <img src="image_aa3ec6.png" alt="Waseda Bear's Button Mashing" class="q3-image" onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <!-- Footer (Contact Info) -->
+            <div class="footer">
+                <div class="footer-text">
+                    <h2>お問い合わせ・最新情報はこちら！</h2>
+                    <p>競プロの面白さを体感せよ！解けたら新歓へGO！<br>
+                    質問等もX(旧Twitter)のDMで気軽にどうぞ！</p>
+                    <p class="url">X : https://x.com/wacpac_wsd</p>
+                </div>
+
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://x.com/wacpac_wsd" alt="QR Code" class="qr-code">
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
