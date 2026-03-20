@@ -152,12 +152,22 @@
         }
         .header-title-panel h1 {
             color: #8b0000;
-            font-size: 17px;
+            font-size: 23px;
             font-weight: 900;
             letter-spacing: 0.02em;
-            line-height: 1.25;
+            line-height: 1.18;
             text-align: left;
             margin: 0;
+        }
+        .header-title-panel h1 .header-ruby-wacpac {
+            ruby-position: over;
+            ruby-align: center;
+        }
+        .header-title-panel h1 .header-ruby-wacpac rt {
+            font-size: 0.4em;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: #8b0000;
         }
         .badges {
             display: flex;
@@ -511,7 +521,7 @@
                     <img src="wacpac_circle_icon.png" alt="WACPAC" class="header-circle" onerror="this.style.display='none'">
                     <div class="header-body">
                         <div class="header-title-panel">
-                            <h1>早稲田競技系プログラミングサークル WACPAC</h1>
+                            <h1>早稲田競技系プログラミングサークル <ruby class="header-ruby-wacpac">WACPAC<rt>わっくぱっく</rt></ruby></h1>
                             <div class="badges">
                                 <span class="badge">オール早稲田</span>
                                 <span class="badge">学年不問(2入もOK!)</span>
