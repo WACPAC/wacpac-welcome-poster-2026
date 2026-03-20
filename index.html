@@ -293,7 +293,7 @@
             padding-bottom: 3mm;
             padding-left: 5mm;
             padding-right: 5mm;
-            margin-bottom: 3mm;
+            margin-bottom: 2mm;
             position: relative;
         }
         .q-title {
@@ -379,14 +379,14 @@
             letter-spacing: 0.02em;
         }
 
-        /* Q2 特有（display 用 MathML のサイズ調整） */
+        /* Q2 特有 */
         .math-formula {
             display: block;
             text-align: center;
+            font-size: 18px;
+            font-weight: bold;
             margin: 8px 0;
-        }
-        .math-formula math {
-            font-size: 1.25rem;
+            font-family: serif;
         }
         .q2-conditions {
             background-color: #fdfbf7;
@@ -582,18 +582,7 @@
                         <p>正整数 <math display="inline"><mi>N</mi></math> が与えられる。正整数 <math display="inline"><mi>x</mi></math> に対して <math display="inline"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math> を、<math display="inline"><mi>x</mi></math> を十進数表記にした文字列で <strong>1 を 2 に、2 を 1 に変えた文字列を十進数として解釈した数</strong>、と定める。例えば、<math display="inline"><mi>f</mi><mo>(</mo><mn>241312</mn><mo>)</mo><mo>=</mo><mn>142321</mn></math> である。<br>
                         このとき、以下の値を求めよ。</p>
                         <div class="math-formula">
-                            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                                <mrow>
-                                    <munderover>
-                                        <mo>∑</mo>
-                                        <mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow>
-                                        <mi>N</mi>
-                                    </munderover>
-                                    <mrow>
-                                        <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo>
-                                    </mrow>
-                                </mrow>
-                            </math>
+                            &sum;<sub>x=1</sub><sup>N</sup> f(x)
                         </div>
                         <div class="q2-conditions">
                             <strong>【手計算】</strong> N = 2026<br>
