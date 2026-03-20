@@ -311,10 +311,12 @@
             padding-bottom: 2px;
         }
         
-        /* 難易度カラー設定 */
-        .diff-easy { color: #009900; }
-        .diff-medium { color: #ff8c00; }
-        .diff-hard { color: #cc0000; }
+        /* 難易度: 3段階（★✩✩ / ★★✩ / ★★★）、表示色は赤で統一 */
+        .diff-rating {
+            color: #cc0000;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+        }
 
         .q-content {
             display: flex;
@@ -544,7 +546,7 @@
             <section class="challenge-callout" aria-labelledby="challenge-heading">
                 <h2 id="challenge-heading" class="challenge-heading">WACPACからの挑戦状</h2>
                 <p class="challenge-body">
-                    ここから先の<strong>3問</strong>は、WACPACが新歓でお届けする<strong>挑戦状</strong>だ。紙とペンでも、エディタでも、好きなやり方でかかってこい。難易度は問ごとに違うから、まずは手が伸びるところからで大丈夫。<br>
+                    ここから先の<strong>3問</strong>は、WACPACが新歓でお届けする<strong>挑戦状</strong>だ。紙とペンでも、エディタでも、好きなやり方でかかってこい。難易度(★1〜★3)は問ごとに違うから、まずは手が伸びるところからで大丈夫。<br>
                     解けたら新歓で<strong>解法自慢・感想・追加のひねり</strong>、なんでも聞かせてくれ。待ってるぞ。
                 </p>
                 <div class="challenge-social" aria-label="Xでの共有">
@@ -557,15 +559,15 @@
             <!-- Q1 -->
             <div class="q-section">
                 <div class="q-title">
-                    Q1. Distinct Sum Grid Path <span style="font-size: 13px;">(<span class="diff-easy">Easy</span>, <span class="diff-hard">Hard</span>)</span>
+                    Q1. Distinct Sum Grid Path <span style="font-size: 13px;">（<span class="diff-rating" title="★1">★</span>・<span class="diff-rating" title="★2">★★★</span>）</span>
                 </div>
                 <div class="q-content">
                     <div class="q-text">
                         <p>5×5のマス目について、左上端のマスから<strong>右または下に隣接するマスへの移動のみ</strong>を繰り返して右下端のマスまで到達する経路について、経路上に含まれるマス（始点・終点を含む）に書かれた整数の総和を経路のスコアとする。<br>
                         この時、<strong>すべての経路でスコアが互いに相異なる</strong>ように、マス目に<strong>非負整数</strong>を書き込め。</p>
                         <ul style="margin-top: 8px; padding-left: 20px;">
-                            <li style="font-size: 1.1em;"><strong class="diff-easy">Easy :</strong> 経路のスコアの最大値が<strong style="font-size: 1.3em;">130</strong>以下</li>
-                            <li style="font-size: 1.1em;"><strong class="diff-hard">Hard :</strong> 経路のスコアの最大値が<strong style="font-size: 1.3em;">70</strong>以下</li>
+                            <li style="font-size: 1.1em;"><strong class="diff-rating" title="★1">★</strong>：経路のスコアの最大値が<strong style="font-size: 1.3em;">130</strong>以下</li>
+                            <li style="font-size: 1.1em;"><strong class="diff-rating" title="★2">★★★</strong>：経路のスコアの最大値が<strong style="font-size: 1.3em;">70</strong>以下</li>
                         </ul>
                         <div class="q-source">出典: https://atcoder.jp/contests/arc214 D問題</div>
                     </div>
@@ -594,7 +596,7 @@
             <!-- Q2 -->
             <div class="q-section">
                 <div class="q-title">
-                    Q2. Typo 1, 2 <span style="font-size: 13px;">(<span class="diff-medium">Medium</span>)</span>
+                    Q2. Typo 1, 2 <span style="font-size: 13px;">（難易度 <span class="diff-rating" title="★2">★★</span>）</span>
                 </div>
                 <div class="q-content">
                     <div class="q-text">
@@ -617,7 +619,7 @@
             <!-- Q3 -->
             <div class="q-section">
                 <div class="q-title">
-                    Q3. Waseda Bear's Button Mashing <span style="font-size: 13px;">(<span class="diff-hard">Hard</span>)</span>
+                    Q3. Waseda Bear's Button Mashing <span style="font-size: 13px;">（難易度 <span class="diff-rating" title="★3">★★★</span>）</span>
                 </div>
                 <div class="q-content">
                     <div class="q-text">
