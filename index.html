@@ -66,37 +66,30 @@
             height: 100%;
             /* Q2 ベア（セクション外・絶対配置）の位置・サイズはここで調整 */
             --q2-bear-right: 11mm;
-            --q2-bear-top: 198mm;
+            --q2-bear-top: 192mm;
             --q2-bear-width: 36mm;
             --q2-bear-max-height: 54mm;
         }
 
-        /* ヘッダー: 左サークル + サークル名・バッジ（旧バナー位置） */
+        /* ヘッダー: 左＝サークル名・バッジ、右＝ロゴ＋X（縦・右寄せ） */
         .header-block {
             margin-bottom: 4mm;
             flex-shrink: 0;
         }
         .header-row {
             display: flex;
-            align-items: stretch;
+            align-items: flex-start;
+            justify-content: space-between;
             gap: 3mm;
         }
         .header-circle {
-            width: 26mm;
-            height: 26mm;
-            align-self: center;
+            width: 20mm;
+            height: 20mm;
             flex-shrink: 0;
             border-radius: 50%;
             object-fit: contain;
             background-color: #fff;
             box-shadow: 0 1px 4px rgba(0,0,0,0.12);
-        }
-        .header-body {
-            flex: 1 1 0;
-            min-width: 0;
-            display: flex;
-            align-items: center;
-            gap: 2.5mm;
         }
         .header-title-panel {
             flex: 1 1 0;
@@ -104,23 +97,25 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 2mm;
-            padding: 3mm 3.5mm;
+            gap: 2.5mm;
+            padding: 3.5mm 4mm;
             background-color: #fff;
             border-radius: 8px;
             border: 2px solid #8b0000;
             box-shadow: 3px 3px 0 rgba(139, 0, 0, 0.12);
         }
-        .header-contact {
+        .header-sidebar {
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+            gap: 2mm;
+        }
+        .header-x-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
             gap: 1.5mm;
-            padding-left: 2.5mm;
-            margin-left: 0.5mm;
-            border-left: 2px dashed #c8a14b;
         }
         .header-x-row {
             display: flex;
@@ -152,12 +147,24 @@
         }
         .header-title-panel h1 {
             color: #8b0000;
-            font-size: 23px;
+            font-size: 41.4px;
             font-weight: 900;
             letter-spacing: 0.02em;
             line-height: 1.18;
-            text-align: left;
             margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.12em;
+        }
+        .header-title-panel h1 .header-title-prefix {
+            font-size: 0.87em;
+            text-align: left;
+        }
+        .header-title-panel h1 .header-wacpac-wrap {
+            display: block;
+            text-align: center;
+            width: 100%;
         }
         .header-title-panel h1 .header-ruby-wacpac {
             ruby-position: over;
@@ -169,17 +176,41 @@
             letter-spacing: 0.12em;
             color: #8b0000;
         }
-        .badges {
+        .header-badges-row {
             display: flex;
-            justify-content: flex-start;
-            gap: 6px;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            min-width: 0;
+            width: 100%;
+        }
+        .badges-line {
+            display: flex;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            width: 100%;
+        }
+        .header-qr-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+        .header-hashtag-inline {
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #0d6e9e;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            text-align: center;
         }
         .badge {
             background-color: #8b0000;
             color: #fff;
-            padding: 3px 12px;
-            border-radius: 15px;
+            padding: 3px 11px;
+            border-radius: 14px;
             font-size: 12px;
             font-weight: 700;
         }
@@ -193,7 +224,7 @@
             padding-left: 5mm;
             padding-right: 5mm;
             background-color: #fff;
-            margin-bottom: 3mm;
+            margin-bottom: 5mm;
             box-shadow: 4px 4px 0px rgba(139, 0, 0, 0.2);
         }
         .info-box ul {
@@ -215,6 +246,11 @@
             font-size: 10px;
             top: 3px;
         }
+        .info-dates {
+            font-size: 1.15em;
+            letter-spacing: 0.02em;
+            color: #8b0000;
+        }
         .info-highlight {
             color: #8b0000;
             display: block;
@@ -226,77 +262,53 @@
             margin-top: 2px;
             display: block;
         }
-
-        /* WACPACからの挑戦状（問題一覧の前） */
-        .challenge-callout {
-            margin-bottom: 4mm;
-            padding: 2mm 4mm;
-            background-color: #faf7f2;
-            border: 2px solid #1a1a1a;
-            border-left: 5px solid #8b0000;
-            border-radius: 6px;
-            box-shadow: 3px 3px 0 rgba(200, 161, 75, 0.35);
-            flex-shrink: 0;
-        }
-        .challenge-heading {
-            font-size: 14px;
-            font-weight: 900;
-            color: #8b0000;
-            letter-spacing: 0.06em;
-            margin-bottom: 2mm;
-            line-height: 1.2;
-        }
-        .challenge-body {
-            font-size: 11.5px;
-            line-height: 1.5;
-            color: #2a2a2a;
+        .info-hashtag {
+            display: block;
+            margin-top: 4px;
+            font-size: 12.5px;
             font-weight: 700;
-        }
-        .challenge-body strong {
-            color: #8b0000;
-        }
-        /* 挑戦状内: X ハッシュタグ（紙面節約のため同一ボックス） */
-        .challenge-social {
-            margin-top: 2mm;
-            padding-top: 2mm;
-            border-top: 1px dashed #c8a14b;
-        }
-        .challenge-hashtag-line {
-            margin: 0 0 1mm;
-            font-size: 10.5px;
-            font-weight: 900;
-            line-height: 1.35;
+            line-height: 1.45;
             color: #1a1a1a;
         }
-        .challenge-hashtag-mark {
-            font-family: ui-monospace, monospace;
-            font-weight: 900;
+        .info-hashtag-mark {
+            font-family: inherit;
+            font-weight: inherit;
             color: #0d6e9e;
             background-color: rgba(13, 110, 158, 0.1);
             padding: 0 4px;
             border-radius: 3px;
-            margin-right: 1px;
+            margin-right: 2px;
         }
-        .challenge-rule-row {
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 3px 6px;
-            font-size: 8.5px;
-            font-weight: 700;
+
+        /* 問題ブロック見出し（テキスト＋下線のみ） */
+        .q-itembox {
+            margin-bottom: 0;
+        }
+        .q-itembox-label {
+            margin: 0 0 3mm;
+            padding: 0;
+            font-size: 13px;
+            font-weight: 900;
+            color: #8b0000;
+            letter-spacing: 0.06em;
             line-height: 1.35;
-            color: #444;
         }
-        .challenge-rule-ng {
-            color: #6b2222;
+        .q-itembox-label-main {
+            text-decoration: underline;
+            text-decoration-color: #8b0000;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
         }
-        .challenge-rule-ok {
-            color: #1a5c30;
+        .q-itembox-label-note {
+            font-size: 0.88em;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #6b3030;
+            font-family: 'Noto Sans JP', sans-serif;
         }
-        .challenge-rule-sep {
-            color: #b8a88c;
-            font-weight: 400;
+        .q-itembox-label-hashtag {
+            color: #0d6e9e;
+            font-weight: inherit;
         }
 
         /* 問題セクション共通 */
@@ -505,10 +517,6 @@
         @media print {
             body { background: none; padding: 0; }
             .poster { box-shadow: none; }
-            .challenge-callout {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
         }
     </style>
 </head>
@@ -518,56 +526,58 @@
         <div class="content">
             <header class="header-block">
                 <div class="header-row">
-                    <img src="wacpac_circle_icon.png" alt="WACPAC" class="header-circle" onerror="this.style.display='none'">
-                    <div class="header-body">
-                        <div class="header-title-panel">
-                            <h1>早稲田競技系プログラミングサークル <ruby class="header-ruby-wacpac">WACPAC<rt>わっくぱっく</rt></ruby></h1>
-                            <div class="badges">
+                    <div class="header-title-panel">
+                        <h1><span class="header-title-prefix">早稲田競技系プログラミングサークル</span><span class="header-wacpac-wrap"><ruby class="header-ruby-wacpac">WACPAC<rt>わっくぱっく</rt></ruby></span></h1>
+                        <div class="header-badges-row">
+                            <div class="badges-line">
                                 <span class="badge">オール早稲田</span>
                                 <span class="badge">学年不問(2入もOK!)</span>
                                 <span class="badge">初心者歓迎</span>
                                 <span class="badge">経験者歓迎</span>
+                                <span class="badge">プログラミング</span>
+                            </div>
+                            <div class="badges-line">
+                                <span class="badge">競プロ</span>
+                                <span class="badge">AtCoder</span>
+                                <span class="badge">ICPC</span>
+                                <span class="badge">Kaggle</span>
                             </div>
                         </div>
-                        <aside class="header-contact" aria-label="X（旧Twitter）">
+                    </div>
+                    <aside class="header-sidebar" aria-label="X（旧Twitter）">
+                        <img src="wacpac_circle_icon.png" alt="WACPAC" class="header-circle" onerror="this.style.display='none'">
+                        <div class="header-x-stack">
                             <div class="header-x-row">
                                 <span class="x-icon" aria-hidden="true" title="X">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
                                 </span>
                                 <a class="header-x-handle" href="https://x.com/wacpac_wsd" target="_blank" rel="noopener noreferrer">@wacpac_wsd</a>
                             </div>
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://x.com/wacpac_wsd" alt="X @wacpac_wsd のQRコード" class="header-qr" width="120" height="120">
-                        </aside>
-                    </div>
+                            <div class="header-qr-block">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://x.com/wacpac_wsd" alt="X @wacpac_wsd のQRコード" class="header-qr" width="120" height="120">
+                                <span class="header-hashtag-inline" aria-label="ハッシュタグ">#wacpac2026</span>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </header>
 
             <!-- Info Box -->
             <div class="info-box">
                 <ul>
-                    <li>新歓活動日： 4/6(月), 14(火), 22(水), 30(木)
+                    <li>新歓活動日： <span class="info-dates">4/6(月), 14(火), 22(水), 30(木)</span>
                         <span class="info-highlight">全日 5限〜6限 (17:00 - 20:00) / 途中抜け・途中参加OK！</span>
                     </li>
                     <li>場所： 未定</li>
-                    <li>内容： 下記掲載問題の解説・競技プログラミング体験会・競プロコンテスト(先輩とガチンコ勝負!)</li>
+                    <li>内容： 下記掲載問題の解説・競技プログラミング体験会・競プロコンテスト(先輩とガチンコ勝負!)
+                    </li>
                 </ul>
             </div>
 
-            <section class="challenge-callout" aria-labelledby="challenge-heading">
-                <h2 id="challenge-heading" class="challenge-heading">WACPACからの挑戦状</h2>
-                <p class="challenge-body">
-                    ここから先の<strong>3問</strong>は、WACPACが新歓でお届けする<strong>挑戦状</strong>だ。紙とペンでも、エディタでも、好きなやり方でかかってこい。難易度(★1〜★3)は問ごとに違うから、まずは手が伸びるところからで大丈夫。<br>
-                    解けたら新歓で<strong>解法自慢・感想・追加のひねり</strong>、なんでも聞かせてくれ。待ってるぞ。
-                </p>
-                <div class="challenge-social" aria-label="Xでの共有">
-                    <p class="challenge-hashtag-line">
-                        <span class="challenge-hashtag-mark">#wacpac_2026</span>で是非、感想・解法を呟いてください！！(ネタバレに注意してください)
-                    </p>
-                </div>
-            </section>
-
-            <!-- Q1 -->
-            <div class="q-section">
+            <section class="q-itembox" aria-labelledby="challenge-itembox-heading">
+                <h2 id="challenge-itembox-heading" class="q-itembox-label"><span class="q-itembox-label-main">WACPACからの挑戦状</span><span class="q-itembox-label-note">（挑戦状の感想・解法を是非呟いてください！<span class="q-itembox-label-hashtag">#wacpac2026</span>)</span></h2>
+                    <!-- Q1 -->
+                    <div class="q-section">
                 <div class="q-title">
                     Q1. Distinct Sum Grid Path <span style="font-size: 13px;">（<span class="diff-rating" title="★1">★</span>・<span class="diff-rating" title="★2">★★★</span>）</span>
                 </div>
@@ -640,6 +650,8 @@
                     <img src="image_aa3ec6.png" alt="Waseda Bear's Button Mashing" class="q3-image" onerror="this.style.display='none'">
                 </div>
             </div>
+
+            </section>
 
             <div class="bottom-bar">
                 <!-- <p class="footer-dm-note">参加希望・質問はXのDMへ！</p> -->
