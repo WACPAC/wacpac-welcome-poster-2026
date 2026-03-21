@@ -332,7 +332,7 @@
             display: inline-block;
             padding-bottom: 2px;
         }
-        
+
         /* 難易度: 3段階（★✩✩ / ★★✩ / ★★★）、表示色は赤で統一 */
         .diff-rating {
             color: #cc0000;
@@ -583,13 +583,13 @@
                 </div>
                 <div class="q-content">
                     <div class="q-text">
-                        <p>5×5のマス目について、左上端のマスから<strong>右または下に隣接するマスへの移動のみ</strong>を繰り返して右下端のマスまで到達する経路について、経路上に含まれるマス（始点・終点を含む）に書かれた整数の総和を経路のスコアとする。<br>
-                        この時、<strong>すべての経路でスコアが互いに相異なる</strong>ように、マス目に<strong>非負整数</strong>を書き込め。</p>
+                        <p>5×5のマス目があります。左上端のマスから<strong>右または下に隣接するマスへの移動のみ</strong>を繰り返して右下端のマスまで到達する経路について、経路上に含まれるマス（始点・終点を含む）に書かれた数の総和を経路の<strong>スコア</strong>とします。<br>
+                        このとき、あり得る<strong>すべての経路でスコアが互いに相異なる</strong>ように、マス目に<strong>非負整数</strong>を書き込んでください。</p>
                         <ul style="margin-top: 8px; padding-left: 20px;">
                             <li style="font-size: 1.1em;"><strong class="diff-rating" title="★1">★</strong>：経路のスコアの最大値が<strong style="font-size: 1.3em;">130</strong>以下</li>
                             <li style="font-size: 1.1em;"><strong class="diff-rating" title="★2">★★★</strong>：経路のスコアの最大値が<strong style="font-size: 1.3em;">70</strong>以下</li>
                         </ul>
-                        <div class="q-source">出典: https://atcoder.jp/contests/arc214 D問題</div>
+                        <div class="q-source">出典: https://atcoder.jp/contests/arc214 D問題 改題</div>
                     </div>
                     <div class="flex-col">
                       <p><strong>例(条件を満たしません)</strong></p>
@@ -620,14 +620,14 @@
                 </div>
                 <div class="q-content">
                     <div class="q-text">
-                        <p>正整数 <math display="inline"><mi>N</mi></math> が与えられる。正整数 <math display="inline"><mi>x</mi></math> に対して <math display="inline"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math> を、<math display="inline"><mi>x</mi></math> を十進数表記にした文字列で <strong>1 を 2 に、2 を 1 に変えた文字列を十進数として解釈した数</strong>、と定める。例えば、<math display="inline"><mi>f</mi><mo>(</mo><mn>241312</mn><mo>)</mo><mo>=</mo><mn>142321</mn></math> である。<br>
-                        このとき、以下の値を求めよ。</p>
+                        <p>正整数 <math display="inline"><mi>N</mi></math> が与えられます。「1」のキーと「2」のキーが入れ替わっている壊れたキーボードがあり、このキーボードで（十進表記の）正整数 <math display="inline"><mi>x</mi></math> を入力したときに得られる正整数を <math display="inline"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math> とします。例えば、<math display="inline"><mi>f</mi><mo>(</mo><mn>241312</mn><mo>)</mo><mo>=</mo><mn>142321</mn></math> です。<br>
+                        このとき、以下の値を求めてください。</p>
                         <div class="math-formula">
                             &sum;<sub>x=1</sub><sup>N</sup> f(x)
                         </div>
                         <div class="q2-conditions">
-                            <strong>【手計算】</strong> N = 2026<br>
-                            <strong>【プログラム】</strong> N &le; 10<sup>18</sup> を満たす入力に対して答えを求めるプログラムを作れ
+                            <strong>【手計算】</strong> N = 2026 のときの答えを計算してください<br>
+                            <strong>【プログラム】</strong> N &le; 10<sup>18</sup> を満たす入力に対して答えを求めるプログラムを作成してください
                         </div>
                     </div>
                 </div>
@@ -643,9 +643,9 @@
                 </div>
                 <div class="q-content">
                     <div class="q-text">
-                        <p>縦5マス、横5マスの石版があります。最初はすべてのマスに「0」が書かれています。</p>
-                        <p>早稲田ベア君は<strong>「好きなタテ1列、またはヨコ1列を選んで、その列の数字をすべて＋1する」</strong>という魔法のボタンを何度でも押せます。</p>
-                        <p>ボタンを連打していたところ、右の石版のようになりました。しかし、いくつかの数字が泥をかぶって見えなくなってしまいました。「？」に入る数字を当ててください。</p>
+                        <p>5×5のマス目が書かれた石版があります。最初はすべてのマスに「0」が記されていました。</p>
+                        <p>早稲田ベア君は「タテまたはヨコの<strong>ある1列</strong>をランダムに選んで、その列に記された<strong>すべての数に＋1</strong>する」という魔法のボタンを持っています。</p>
+                        <p>このボタンを何回か押したところ、石版は右のようになりました。しかし、いくつかの数が泥をかぶって見えなくなってしまいました。「？」に入る数をすべて当ててください。</p>
                     </div>
                     <img src="image_aa3ec6.png" alt="Waseda Bear's Button Mashing" class="q3-image" onerror="this.style.display='none'">
                 </div>
