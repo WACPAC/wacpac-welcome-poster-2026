@@ -8,6 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 import puppeteer from 'puppeteer';
+import { execSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -74,18 +75,30 @@ async function inlineRemoteQrImage() {
     .catch(() => '');
   if (!qrSrc || !/^https?:\/\//i.test(qrSrc)) return;
 
-  const res = await fetch(qrSrc, { signal: AbortSignal.timeout(45_000) });
-  if (!res.ok) {
-    console.warn('QR 画像の取得に失敗しました:', res.status, qrSrc);
-    return;
+  // const res = await fetch(qrSrc, { signal: AbortSignal.timeout(45_000) });
+  // if (!res.ok) {
+  //   console.warn('QR 画像の取得に失敗しました:', res.status, qrSrc);
+  //   return;
+  // }
+  // const buf = Buffer.from(await res.arrayBuffer());
+  // const mime = (res.headers.get('content-type') || 'image/png').split(';')[0].trim();
+  // const dataUrl = `data:${mime};base64,${buf.toString('base64')}`;
+  // await page.evaluate((url) => {
+  //   const el = document.querySelector('img.header-qr');
+  //   if (el) el.src = url;
+  // }, dataUrl);
+  try {
+    // curlを使ってバイナリデータを取得し、base64に変換
+    const base64Data = execSync(`curl -sL "${qrSrc}" | base64`).toString().replace(/\s/g, '');
+    const dataUrl = `data:image/png;base64,${base64Data}`;
+
+    await page.evaluate((url) => {
+      const el = document.querySelector('img.header-qr');
+      if (el) el.src = url;
+    }, dataUrl);
+  } catch (e) {
+    console.error('curlでの取得に失敗しました', e);
   }
-  const buf = Buffer.from(await res.arrayBuffer());
-  const mime = (res.headers.get('content-type') || 'image/png').split(';')[0].trim();
-  const dataUrl = `data:${mime};base64,${buf.toString('base64')}`;
-  await page.evaluate((url) => {
-    const el = document.querySelector('img.header-qr');
-    if (el) el.src = url;
-  }, dataUrl);
 }
 
 await inlineRemoteQrImage();
