@@ -312,15 +312,15 @@
             font-weight: inherit;
         }
         .q-itembox-diff {
-            margin: -6px 0;
+            margin: -2px 0;
             padding: 0;
-            font-size: 14px;
-            font-weight: 900;
-            color: #8b0000;
+            font-size: 11px;
+            font-weight: 700;
+            color: #000000;
             letter-spacing: 0.06em;
             line-height: 1.35;
             background-color: #fff;
-            border: 2px solid #1a1a1a;
+            border: 1px solid #8b0000a0;
             position: relative;
             border-radius: 8px;
             padding-top: 1mm;
@@ -410,6 +410,7 @@
             display: flex;
             flex-direction: column;
             align-items: stretch;
+            text-align: right;
         }
         .q1-example-aside {
             display: flex;
@@ -417,6 +418,7 @@
             align-items: flex-end;
             width: fit-content;
             margin-left: auto;
+            margin-top: auto;
         }
         .q1-example-score {
             margin-top: 4px;
@@ -439,7 +441,7 @@
         }
         .q2-conditions {
             background-color: #fdfbf7;
-            border-left: 4px solid #8b0000;
+            border-left: 4px solid #8b000060;
             padding: 5px 10px;
             margin-top: 5px;
         }
@@ -551,7 +553,7 @@
                         <div class="header-badges-row">
                             <div class="badges-line">
                                 <span class="badge">オール早稲田</span>
-                                <span class="badge">学年不問(2入もOK!)</span>
+                                <span class="badge">学年不問(院生もOK!)</span>
                                 <span class="badge">初心者歓迎</span>
                                 <span class="badge">経験者歓迎</span>
                                 <span class="badge">プログラミング</span>
@@ -604,7 +606,7 @@
                 <div class="q-content">
                     <div class="q-text">
                         <p>5×5のマス目があります。左上端のマスから<strong>右または下に隣接するマスへの移動のみ</strong>を繰り返して右下端のマスまで到達する経路について、経路上に含まれるマス（始点・終点を含む）に書かれた数の総和を経路の<strong>スコア</strong>とします。<br>
-                        このとき、あり得る<strong>すべての経路でスコアが互いに相異なる</strong>ように、マス目に<strong>非負整数</strong>を書き込んでください。</p>
+                        このとき、あり得る<strong>すべての経路でスコアが互いに相異なる</strong>ように、マス目に<strong>非負整数</strong>を書き込んでください。ただし、以下の制約も満たすようにしてください。</p>
                         <ul style="margin-top: 8px; padding-left: 20px;">
                             <li style="font-size: 1.1em;"><strong class="diff-rating" title="★1">★</strong>：経路のスコアの最大値が<strong style="font-size: 1.3em;">130</strong>以下</li>
                             <li style="font-size: 1.1em;"><strong class="diff-rating" title="★2">★★★</strong>：経路のスコアの最大値が<strong style="font-size: 1.3em;">70</strong>以下</li>
@@ -647,8 +649,8 @@
                             \[\sum_{x=1}^{N}f(x)\]
                         </div>
                         <div class="q2-conditions">
-                            <strong>【手計算】\(N=2026\) のときの答えを計算してください<br>
-                            <strong>【プログラム】\(N\leqq 10^{18}\) を満たす入力に対して答えを求めるプログラムを作成してください
+                            <strong>【手計算】</strong>\(N=2026\) のときの答えを計算してください<br>
+                            <strong>【プログラム】</strong>\(N\leqq 10^{18}\) を満たす入力に対して答えを求めるプログラムを作成してください
                         </div>
                     </div>
                 </div>
