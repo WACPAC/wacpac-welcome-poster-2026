@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
     <style>
         /* A4サイズ印刷用の設定 */
         @page {
@@ -139,7 +140,7 @@
         .header-qr {
             width: 19mm;
             height: 19mm;
-            border: 1.5px solid #1a1a1a;
+            /*border: 1.5px solid #1a1a1a;*/
             border-radius: 3px;
             background-color: #fff;
             padding: 1px;
@@ -310,6 +311,25 @@
             color: #0d6e9e;
             font-weight: inherit;
         }
+        .q-itembox-diff {
+            margin: -6px 0;
+            padding: 0;
+            font-size: 14px;
+            font-weight: 900;
+            color: #8b0000;
+            letter-spacing: 0.06em;
+            line-height: 1.35;
+            background-color: #fff;
+            border: 2px solid #1a1a1a;
+            position: relative;
+            border-radius: 8px;
+            padding-top: 1mm;
+            padding-bottom: 1mm;
+            padding-left: 1mm;
+            padding-right: 1mm;
+            margin-bottom: 1mm;
+            text-align: center;
+        }
 
         /* 問題セクション共通 */
         .q-section {
@@ -400,7 +420,7 @@
         }
         .q1-example-score {
             margin-top: 4px;
-            width: 125px;
+            width: 140px;
             text-align: right;
             font-size: 11px;
             font-weight: 900;
@@ -412,9 +432,9 @@
         .math-formula {
             display: block;
             text-align: center;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
-            margin: 8px 0;
+            margin: -16px 0;
             font-family: serif;
         }
         .q2-conditions {
@@ -575,7 +595,7 @@
             </div>
 
             <section class="q-itembox" aria-labelledby="challenge-itembox-heading">
-                <h2 id="challenge-itembox-heading" class="q-itembox-label"><span class="q-itembox-label-main">WACPACからの挑戦状</span><span class="q-itembox-label-note">（挑戦状の感想・解法を是非呟いてください！<span class="q-itembox-label-hashtag">#wacpac2026</span>)</span></h2>
+                <h2 id="challenge-itembox-heading" class="q-itembox-label"><span class="q-itembox-label-main">WACPACからの挑戦状</span><span class="q-itembox-label-note">（挑戦状の感想・解法を是非呟いてください！<span class="q-itembox-label-hashtag">#wacpac2026</span>)</span><span class="q-itembox-diff" style="float:right">難易度目安：<span class="diff-rating" title="★1">★</span>(易)～<span class="diff-rating" title="★2">★★★</span>(難)</span></h2>
                     <!-- Q1 -->
                     <div class="q-section">
                 <div class="q-title">
@@ -604,10 +624,11 @@
                               </table>
                               <!-- 経路描画 (1,1)->(1,2)->(2,2)->(3,2)->(3,3)->(4,3)->(5,3)->(5,4)->(5,5) -->
                               <svg class="q1-path" viewBox="0 0 125 125">
-                                  <polyline points="12.5,12.5 37.5,12.5 37.5,37.5 37.5,62.5 62.5,62.5 62.5,87.5 62.5,112.5 87.5,112.5 112.5,112.5" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <polyline points="12.5,12.5 12.5,37.5 12.5,62.5 37.5,62.5 37.5,87.5 62.5,87.5 87.5,87.5 87.5,112.5 112.5,112.5" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+                                  <polyline points="12.5,12.5 37.5,12.5 37.5,37.5 62.5,37.5 87.5,37.5 112.5,37.5 112.5,62.5 112.5,87.5 112.5,112.5" fill="none" stroke="#0000cc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
                               </svg>
                           </div>
-                          <p class="q1-example-score">Score = 50</p>
+                          <p class="q1-example-score">Score = 41 <font color="#000000">/</font> <font color="#0000cc">Score = 41</font></p>
                       </div>
                     </div>
                 </div>
@@ -620,14 +641,14 @@
                 </div>
                 <div class="q-content">
                     <div class="q-text">
-                        <p>正整数 <math display="inline"><mi>N</mi></math> が与えられます。「1」のキーと「2」のキーが入れ替わっている壊れたキーボードがあり、このキーボードで（十進表記の）正整数 <math display="inline"><mi>x</mi></math> を入力したときに得られる正整数を <math display="inline"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math> とします。例えば、<math display="inline"><mi>f</mi><mo>(</mo><mn>241312</mn><mo>)</mo><mo>=</mo><mn>142321</mn></math> です。<br>
+                        <p>正整数 \(N\) が与えられます。「1」のキーと「2」のキーが入れ替わっている壊れたキーボードがあり、このキーボードで（十進表記の）正整数 \(x\) を入力したときに得られる正整数を \(f(x)\)とします。例えば、\(f(241312)=142321\)です。<br>
                         このとき、以下の値を求めてください。</p>
                         <div class="math-formula">
-                            &sum;<sub>x=1</sub><sup>N</sup> f(x)
+                            \[\sum_{x=1}^{N}f(x)\]
                         </div>
                         <div class="q2-conditions">
-                            <strong>【手計算】</strong> N = 2026 のときの答えを計算してください<br>
-                            <strong>【プログラム】</strong> N &le; 10<sup>18</sup> を満たす入力に対して答えを求めるプログラムを作成してください
+                            <strong>【手計算】\(N=2026\) のときの答えを計算してください<br>
+                            <strong>【プログラム】\(N\leqq 10^{18}\) を満たす入力に対して答えを求めるプログラムを作成してください
                         </div>
                     </div>
                 </div>
